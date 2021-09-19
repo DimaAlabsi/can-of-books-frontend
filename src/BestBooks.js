@@ -9,9 +9,7 @@ class BestBooks extends React.Component {
       books: []
     }
   }
-
   componentDidMount = () => {
-
     axios.get(`${process.env.MONGO_SERVER}/books`)
       .then((res) => {
         this.setState({
@@ -23,6 +21,7 @@ class BestBooks extends React.Component {
   /* TODO: Make a GET request to your API to fetch books for the logged in user  */
 
   render() {
+    console.log(this.state.books);
 
     /* TODO: render user's books in a Carousel */
     return (
@@ -46,8 +45,6 @@ class BestBooks extends React.Component {
                         <h3>i.description</h3>
                         <h3>i.status</h3>
                         <h3>i.email</h3>
-
-                        
                       </Carousel.Caption>
                     </Carousel.Item>
                   </>
@@ -63,6 +60,7 @@ class BestBooks extends React.Component {
         )}
       </>
     )
+
   }
 }
 
