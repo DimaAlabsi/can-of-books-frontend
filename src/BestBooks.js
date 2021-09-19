@@ -1,7 +1,10 @@
 import React from 'react';
 import axios from "axios";
+
 import Carousel from 'react-bootstrap/Carousel';
 // const MONGO_SERVER=process.env.MONGO_SERVER;
+
+import Carousel from 'react-bootstrap/Carousel'
 
 
 class BestBooks extends React.Component {
@@ -13,6 +16,7 @@ class BestBooks extends React.Component {
   }
 
   componentDidMount = () => {
+
     console.log(this.state.books)
 
     axios.get(`${process.env.MONGO_SERVER}/books`)
@@ -25,6 +29,8 @@ class BestBooks extends React.Component {
       })
       
   }
+
+
   /* TODO: Make a GET request to your API to fetch books for the logged in user  */
 
   render() {
@@ -45,6 +51,7 @@ class BestBooks extends React.Component {
                       <img
                         className="d-block w-100"
                         // src="holder.js/800x400?text=First slide&bg=373940"
+
                         alt="First slide"
                       />
                       <Carousel.Caption>
