@@ -1,7 +1,7 @@
 # Can Of Books Frontend 
 
 **Author**: Essam Omar , Dima Alabsi
-**Version**: 2.0.0 
+**Version**: 3.0.0 
 
 ## Overview
 a small app to track what books have impacted you, and what's recommended to read next
@@ -37,7 +37,16 @@ Start time: 2:00pm
 Finish time: 6:00pm
 
 Actual time needed to complete: 4 hours
+----------------------------------
+Name of feature: Resource Create and Delete
 
+Estimate of time needed to complete: 5 hours
+
+Start time: 3:00pm
+
+Finish time: 8:00pm
+
+Actual time needed to complete: 5 hours
 ## Credit and Collaborations
 Essam Omar
 Dima Alabsi
