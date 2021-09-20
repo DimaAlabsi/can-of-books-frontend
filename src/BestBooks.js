@@ -1,8 +1,12 @@
 import React from 'react';
 import axios from "axios";
+
 import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './Login.css'
+
+
+
 class BestBooks extends React.Component {
   constructor(props) {
     super(props);
@@ -14,13 +18,20 @@ class BestBooks extends React.Component {
     console.log(this.state.books)
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/books`)
       .then((res) => {
+
+
+    
         this.setState({
           books: res.data
+
         });
       })
+      
   }
+
   /* TODO: Make a GET request to your API to fetch books for the logged in user  */
   render() {
+
     /* TODO: render user's books in a Carousel */
     return (
       <>
@@ -33,7 +44,9 @@ class BestBooks extends React.Component {
                     <Carousel.Item>
                       <img
                         className="d-block w-100"
+
                         src="https://lh3.googleusercontent.com/bXB6ueK2wyb44f8A5Vxgf0_JmmTThXr7cqhUY9vr133RZkGguV2WGKV-Q4LTimmijCgO2zD3p3FxpfXcT3MALfLP3UQo8q2VpvzRLkj0Gg=s626"
+
                         alt="First slide"
                       />
                       <Carousel.Caption>
