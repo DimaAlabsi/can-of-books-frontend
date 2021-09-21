@@ -21,6 +21,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+            books: [],
+
       user: null,
       title:"",
       description:"",
@@ -29,7 +31,22 @@ class App extends React.Component {
 
     }
   }
+  componentDidMount = () => {
 
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/books`)
+    .then((res) => {
+        this.setState({
+         books: res.data
+    
+
+        });
+        // console.log(res.data)
+
+      })
+      
+    console.log(`${process.env.REACT_APP_BACKEND_URL}/books`)  
+  }
+  // -----------------------------------
   loginHandler = (user) => {
     this.setState({
       user,
@@ -65,8 +82,8 @@ class App extends React.Component {
     e.preventDefault();
     let config={
       method:"POST",
-      baseurl:`${process.env.REACT_APP_BACKEND_URL}`,
-      url:"/create-books",
+      baseURL:process.env.REACT_APP_BACKEND_URL,
+      url:"/create-book",
       data:{
         title:this.state.title,
         description:this.state.description,
@@ -76,15 +93,24 @@ class App extends React.Component {
       }
      
     };
-    axios(config).then((res)=>{
+    axios(config).then(res=>{
+      console.log(res.data)
       this.setState({
-        data:res.data,
-      });
-    }
-    )
-    console.log(`${process.env.REACT_APP_BACKEND_URL}/create-books`)
+        books:res.data
+      })
+    })
   }
+  handleDelete=(id)=>{
+    let config={
+      method:"DELETE",
+      baseURL:process.env.REACT_APP_BACKEND_URL,
+      url:`/delet-book/${id}`
+    }
+    axios(config).then(res=>{
+      console.log(res.data);
+    })
 
+  }
   render() {
     return (
       <>
@@ -96,12 +122,14 @@ class App extends React.Component {
             </Route>
             {/* TODO: add a route with a path of '/profile' that renders a `Profile` component */}
           </Switch>
-          <BestBooks/>
           <BookForm tiltleHandle={this.tiltleHandle}
           statusHandle={this.statusHandle}
           emailHandle={this.emailHandle}
           descriptionHandle={this.descriptionHandle} 
-          submitHandle={this.submitHandle}/>
+          submitHandle={this.submitHandle}
+          handleDelete={this.handleDelete}/>
+          <BestBooks books={this.state.books}  />
+         
           <Footer />
         </Router>
       </>

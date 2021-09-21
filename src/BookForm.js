@@ -14,7 +14,10 @@ import React, { Component } from 'react';
 
 
 
+
           <input type="submit" value="add a new BOOK "/>
+          <button onClick={()=>{this.props.handleDelete(this.props.id)}}>Delete</button>
+
         </form>
             </>
         )
