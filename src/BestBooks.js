@@ -6,35 +6,64 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './Login.css'
 
 
-
 class BestBooks extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      books: []
-    }
-  }
-  componentDidMount = () => {
-    console.log(this.state.books)
-    axios.get(`${process.env.REACT_APP_BACKEND_URL}/books`)
-      .then((res) => {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     // books: []
+  //     // showData:false
+  //   }
+  // }
+
+  
 
 
-    
-        this.setState({
-          books: res.data
 
-        });
-      })
-      
-  }
+
+
 
   /* TODO: Make a GET request to your API to fetch books for the logged in user  */
   render() {
 
+
+
+
     /* TODO: render user's books in a Carousel */
     return (
       <>
+
+      {this.props.books.length ? (
+        <Carousel>
+          {
+            this.props.books.map((i) => {
+              return (
+                <>
+                  <Carousel.Item>
+                    <img
+                      className="d-block w-100"
+                      src="https://lh3.googleusercontent.com/bXB6ueK2wyb44f8A5Vxgf0_JmmTThXr7cqhUY9vr133RZkGguV2WGKV-Q4LTimmijCgO2zD3p3FxpfXcT3MALfLP3UQo8q2VpvzRLkj0Gg=s626"
+                      alt="First slide"
+                    />
+                    <Carousel.Caption>
+                      <h1>{i.title}</h1>
+                      <h3>{i.description}</h3>
+                      <h3>{i.status}</h3>
+                      <h3>{i.email}</h3>
+                    </Carousel.Caption>
+                  </Carousel.Item>
+                </>
+              )
+            })
+          }
+        </Carousel>
+      ) : (
+        <h3>No Books Found :(</h3>
+      )}
+    </>
+  )
+}
+}
+
         {this.state.books.length ? (
           <Carousel>
             {
@@ -68,4 +97,5 @@ class BestBooks extends React.Component {
     )
   }
 }
+
 export default BestBooks;
